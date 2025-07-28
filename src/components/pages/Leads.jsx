@@ -1294,10 +1294,9 @@ emptyRow => <tr key={`empty-${emptyRow.Id}`} className="hover:bg-gray-50 empty-r
                         </tr>)}
                     </tbody>
                 </table>
-            </div>
-</div>}
+</div>
+</div>
 </Card>
-    
     {/* Bulk Actions */}
     {selectedLeads.length > 0 && (
       <Card className="p-4 bg-primary-50 border-primary-200">
