@@ -1290,12 +1290,14 @@ onKeyDown={e => {
                                     </button>
                                 </div>
                             </td>
-                        </tr>)}
+</tr>)}
                     </tbody>
-</table>
+                </table>
             </div>
         </div>
-    </Card>
+        </Card>
+        </>
+    )}
     
     {/* Bulk Actions */}
     {selectedLeads.length > 0 && (
