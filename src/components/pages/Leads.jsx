@@ -1292,10 +1292,10 @@ onKeyDown={e => {
                             </td>
 </tr>)}
                     </tbody>
-                </table>
-</div>
+</table>
+            </div>
         </div>
-        </Card>
+    </Card>
     )}
     
     {/* Bulk Actions */}
