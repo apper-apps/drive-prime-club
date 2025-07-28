@@ -84,8 +84,26 @@ export const createLead = async (leadData) => {
   await new Promise(resolve => setTimeout(resolve, 300));
   
   // Validate required fields
+  if (!leadData.productName || !leadData.productName.trim()) {
+    throw new Error("Product name is required");
+  }
+  
+  if (!leadData.email || !leadData.email.trim()) {
+    throw new Error("Email is required");
+  }
+  
+  if (!leadData.name || !leadData.name.trim()) {
+    throw new Error("Name is required");
+  }
+  
   if (!leadData.websiteUrl || !leadData.websiteUrl.trim()) {
     throw new Error("Website URL is required");
+  }
+  
+  // Validate email format
+  const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+  if (!emailRegex.test(leadData.email)) {
+    throw new Error("Please enter a valid email address");
   }
   
   // Check for duplicate website URL before creating
@@ -97,10 +115,22 @@ export const createLead = async (leadData) => {
   if (existingLead) {
     throw new Error(`A lead with website URL "${leadData.websiteUrl}" already exists`);
   }
+  
+  // Check for duplicate email
+  const existingEmailLead = leads.find(lead => 
+    lead.email && lead.email.toLowerCase() === leadData.email.toLowerCase()
+  );
+  
+  if (existingEmailLead) {
+    throw new Error(`A lead with email "${leadData.email}" already exists`);
+  }
 // Update history tracker for new lead
   leadHistoryTracker.set(normalizedUrl, true);
   const maxId = Math.max(...leads.map(l => l.Id), 0);
   const newLead = {
+    productName: leadData.productName,
+    email: leadData.email,
+    name: leadData.name,
     websiteUrl: leadData.websiteUrl,
 teamSize: leadData.teamSize || "1-3",
     arr: leadData.arr || 0,
