@@ -1296,6 +1296,7 @@ onKeyDown={e => {
 </div>
 </div>
 </Card>
+    
     {/* Bulk Actions */}
     {selectedLeads.length > 0 && (
       <Card className="p-4 bg-primary-50 border-primary-200">
@@ -1336,6 +1337,7 @@ onKeyDown={e => {
       categoryOptions={categoryOptions}
       onCreateCategory={handleCreateCategory}
     />}
+    
     {/* Edit Lead Modal */}
     {editingLead && <EditLeadModal
         lead={editingLead}
@@ -1344,6 +1346,7 @@ onKeyDown={e => {
         categoryOptions={categoryOptions}
         onCreateCategory={handleCreateCategory}
     />}
+    
     {/* Bulk Delete Confirmation Dialog */}
     {showBulkDeleteDialog && (
       <BulkDeleteConfirmationDialog
@@ -1352,7 +1355,7 @@ onKeyDown={e => {
         onCancel={() => setShowBulkDeleteDialog(false)}
       />
     )}
-</motion.div>
+    </motion.div>
   );
 };
 
